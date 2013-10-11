@@ -1,5 +1,15 @@
 <?php
 class DBDescriptor{
+	private $currentDB;
+	function __construct(){
+		$this->currentDB=$this->getCurrentDB();
+	}
+	private function getCurrentDB(){
+		$currentDB  = explode('dbname=', Yii::app()->db->connectionString);
+		if (is_array($currentDB) && isset($currentDB[1]))
+			return $currentDB[1];
+		return null;
+	}
 	public function describeDatabase(){
 		$return=array();		
 		$showTablesSQL="show tables;";
@@ -9,7 +19,7 @@ class DBDescriptor{
 			if (is_array($tableValue) && isset($tableValue[0])){
 				$tableName=$tableValue[0];
 				$tableDescription=$this->describeTable($tableName);
-				$return[]=array('table'=>$tableName,'showCreate'=>$tableDescription,'relationships'=>$this->findBelongsToRelationships($tableName));
+				$return[]=array('table'=>$tableName,'showCreate'=>$tableDescription,'relationships'=>$this->findBelongsToRelationships($tableName),'indexes'=>$this->findTableIndexes($tableName));
 			}
 		}
 
@@ -37,13 +47,26 @@ class DBDescriptor{
 **@return answer             | id_questionitem            | question_item           | id          
 **/
 	public function findBelongsToRelationships($tableName){
-		$curdb  = explode('dbname=', Yii::app()->db->connectionString);
-		$dbName=$curdb[1];
+		if (!$this->currentDB){
+			return false;
+		}
 		$sql="SELECT table_name,column_name,referenced_table_name,referenced_column_name
 			  FROM INFORMATION_SCHEMA.key_column_usage  WHERE table_name=:tableName AND referenced_table_schema = :dbName
 			  AND referenced_table_name IS NOT NULL  ORDER BY table_name, column_name;";
-		$relationships=Yii::app()->db->createCommand($sql)->bindParam("dbName",$dbName)->bindParam("tableName",$tableName)->queryAll();
+		$relationships=Yii::app()->db->createCommand($sql)->bindParam("dbName",$this->currentDB)->bindParam("tableName",$tableName)->queryAll();
 		return $relationships;
 
+	}
+	/**
+	** @return index data (non_unique,key_name,column_name)
+	** @param table name
+	**/
+	public function findTableIndexes($tableName){
+		if (!$this->currentDB){
+			return false;
+		}
+		$sql="show index from `$tableName`";
+		$indexes=Yii::app()->db->createCommand($sql)->queryAll();
+		return $indexes;
 	}
 }
