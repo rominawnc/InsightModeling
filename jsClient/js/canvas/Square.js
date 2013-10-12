@@ -37,34 +37,39 @@ function Square(options){
 	};
 	return this;
 };
-/*
-Lends: ParamHandler
-
-Useful so the Square can validate itself
-*/
-Square.prototype = new ParamHandler();
-
+Square.prototype.getProperties = function(){
+	var returnObject={};
+	for(var prop in this){
+		if (this.hasOwnProperty(prop)){
+			returnObject[prop]= this[prop];
+		}
+	}
+	return returnObject;
+}
 /*
 Function: draw
-Allows to either draw or redraw a square, since it will take old object  parameters if the options param is not set. 
-@NOTE > What happens if we have differential parameters ? Think about this case ASAP
-Still learning prototype, so I could be screwing this up :(
+Draws a rectangle in the canvas or another rectangle(Square object)
+
 */
-Square.prototype.draw=function(options){
-	try{		
-		/*
-		this object has all keys that we can expect and what to do when we find them
-		*/
-		this.checkAgainst={strokeStyle:function(){this.context.strokeStyle=this.stokeStyle},lineWidth:function(){this.context.lineWidth=this.lineWidth}};
-		this.paramOptions=options;
+Square.prototype.draw=function(){
+	try{
+		var rectFunctions = {
+			"strokeStyle": function(object){
+				object.context.strokeStyle=object.strokeStyle;				
+			},
+			"lineWidth": function(object){
+				object.context.lineWidth=object.lineWidth;
+			}
+		}
 		/*
 		 execute a function for each found index. 
 		*/
-		if(typeof(this.paramOptions)!="undefined"){
-			this.doIfKeyExists(options);	
-		}
-		
-		this.context.rect(this.x,this.y, this.height,this.width);
+		for (var option in this.options) {
+			if (this.hasOwnProperty(option) && typeof(rectFunctions[options])=="function"){
+				rectFunctions[option](this);
+			}
+		};
+		this.context.rect(this.x,this.y, this.width,this.height);
 		this.context.stroke();
 		this.parent.children.push(this);
 		return this;
@@ -95,6 +100,7 @@ Square.prototype.drawText = function(options){
 		parent:this
 	}).draw();
 }
+
 
 /*
 Function: ideas
