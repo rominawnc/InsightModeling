@@ -1,0 +1,311 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"inde",
+				"indexes"
+			],
+			[
+				"cur",
+				"curdb"
+			],
+			[
+				"curre",
+				"currentDB"
+			],
+			[
+				"v",
+				"var_dump"
+			],
+			[
+				"tab",
+				"tableName"
+			],
+			[
+				"db",
+				"dbName"
+			],
+			[
+				"table",
+				"tableName"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"ta",
+				"tableName"
+			],
+			[
+				"s",
+				"showTable"
+			],
+			[
+				"creat",
+				"createCommand"
+			],
+			[
+				"show",
+				"showTableSQL"
+			],
+			[
+				"tabl",
+				"tableValue"
+			],
+			[
+				"f",
+				"foreach	foreach …"
+			],
+			[
+				"id",
+				"idGame"
+			],
+			[
+				"_",
+				"_mysupervalidator"
+			],
+			[
+				"user",
+				"userId"
+			],
+			[
+				"sco",
+				"scoreCRUD"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "Package Control Messages\n========================\n\nBetter JavaScript:\n-----------------\n\n  Better JavaScript is now installed! To ensure that the updated syntax file and symbol list take\n  effect, you may need to do the following:\n  \n  1. Close all open JavaScript/JSON files (including .sublime-settings files)\n  2. Exit Sublime\n  3. Delete the cache and index files in your Sublime user directory\n  4. Re-open Sublime\n  \n  \n  Uninstalling\n  ------------\n  Before uninstalling Better JavaScript, be sure close all open JavaScript/JSON\n  files, and remove \"JavaScript\" from the \"ignored_packages\" list in your Sublime\n  user settings. You can now safely uninstall the Better JavaScript package.\n  \n  It's normal to see a few errors from Sublime about not being able to find syntax files. Just exit\n  Sublime and re-open it, and everything should be fixed.\n\n\nBetter Completion:\n-----------------\n\n  Sublime Better Completion Package\n  ===============================\n  \n  How To USE\n  ==========\n  \n  This package APIs is **disabled** by default during the initial installation.\n  \n  So you need open `API-Completion-Package: Setting - User` and setup what the completion you wanna enable and finally you have to re-start your sublime text editor.\n  \n  \n  For more information, please visit:\n  	https://github.com/Pleasurazy/Sublime-Better-Completion\n",
+			"settings":
+			{
+				"buffer_size": 1350,
+				"line_ending": "Unix",
+				"name": "Package Control Messages",
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 306.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Enable Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/romina/.config/sublime-text-3/Packages/Sublime-Better-Completion/sublime-API-Completions-Package.sublime-settings",
+		"/home/romina/.config/sublime-text-3/Packages/User/sublime-API-Completions-Package.sublime-settings",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/tru.js",
+		"/home/romina/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/ParamHandler.js",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/Square.js",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/index.html",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/CanvasObject.js",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/CanvasObject.js",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/ParamHandler.js",
+		"/home/romina/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/romina/.config/sublime-text-3/Packages/NaturalDocs/NaturalDocs.sublime-settings",
+		"/home/romina/.config/sublime-text-3/Packages/User/NaturalDocs.sublime-settings",
+		"/home/romina/.config/sublime-text-3/Packages/NaturalDocs/Default (Linux).sublime-keymap",
+		"/home/romina/Documents/Workspace/insightDB/protected/components/DBDescriptor.php",
+		"/home/romina/Documents/Workspace/insightDB/protected/controllers/RestController.php",
+		"/home/romina/Documents/Workspace/insightDB/index.php",
+		"/home/romina/Documents/Workspace/insightDB/protected/config/main.php",
+		"/home/romina/Documents/Workspace/insightDB/protected/runtime/application.log",
+		"/home/romina/Documents/Workspace/insightDB/protected/config/console.php",
+		"/home/romina/Documents/Workspace/DSCAdmin/admin/protected/config/main.php",
+		"/home/romina/todos/server/bootstrap.js",
+		"/home/romina/mongoDBApiHelper/mongoDBApiHelper.html",
+		"/home/romina/mongoDBApiHelper/mongoDBApiHelper.js"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/home/romina/parties"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"findBelongsToRelationships",
+			"curdb",
+			"queryAll",
+			"module",
+			"subsc",
+			"publis",
+			"subs",
+			"createError",
+			"createe",
+			"each",
+			"outstanding",
+			"}}\n",
+			"atte",
+			"each",
+			".rsvps",
+			"rsvps",
+			"check",
+			"user"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1350,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1252,
+								1252
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 345.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"project": "insightDB.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 220.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

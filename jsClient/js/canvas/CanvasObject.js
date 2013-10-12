@@ -1,3 +1,4 @@
+"use strict";
 /*
 Class: CanvasObject
 
@@ -38,5 +39,26 @@ CanvasObject.prototype.drawSquare = function(options){
 	square.height= options.height;
 	square.width=options.width;
 	square.context=this.context;
-	square.draw();	
+	return square.draw();	
+
+}
+/*
+Function: fillText
+Returns: {boolean}
+Parameters: 
+	text {required} - {string}
+	x {absolute} {required} - {integer} x position of text
+	y {absolute} {required} - {integer } y position of text
+	fillStyle {required} - {string} will determine the text function to use
+*/
+CanvasObject.prototype.drawText = function(options){
+	var text = new TextObject({
+		x:options.x,
+		y:options.y,
+		text:this.text,
+		fillStyle:this.fillStyle,
+		context: this.context
+	});
+	return text.draw();
+
 }
