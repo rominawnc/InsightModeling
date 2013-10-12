@@ -60,11 +60,9 @@ Square.prototype.getProperties = function(){
 /*
 Function: draw
 Draws a rectangle in the canvas or another rectangle(Square object)
-
 */
 Square.prototype.draw=function(options){
 	try{
-
 		var rectFunctions = {
 			"strokeStyle": function(object){
 				object.parent.context.strokeStyle=object.strokeStyle;				
@@ -105,7 +103,7 @@ Redraw the object and it's childrens
 */
 Square.prototype.redraw= function(){
 	try{			
-		this.parent.clear();
+
 		this.draw({replace:this});
 		for(var childKey in this.children){
 			if (this.children.hasOwnProperty(childKey)){

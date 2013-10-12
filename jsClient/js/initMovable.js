@@ -7,5 +7,11 @@ $(document).ready(function(){
 		lineWidth:20,
 		width:200,
 	});
-
+	canvasObject.drawSquare({
+		y:200,
+		x:10,
+		height:100,
+		lineWidth:20,
+		width:200,
+	});
 });
