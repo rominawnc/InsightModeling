@@ -27,5 +27,5 @@ $(document).ready(function(){
 		width:200
 	});
 	square.drawText({y:10,x:10,text:"Relative text", fillStyle:"fill"});
-
+	canvasObject.drawText({y:10,x:200,text:"Relative text", fillStyle:"fill"});
 });

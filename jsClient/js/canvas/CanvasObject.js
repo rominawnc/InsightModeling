@@ -55,8 +55,8 @@ CanvasObject.prototype.drawText = function(options){
 	var text = new TextObject({
 		x:options.x,
 		y:options.y,
-		text:this.text,
-		fillStyle:this.fillStyle,
+		text:options.text,
+		fillStyle:options.fillStyle,
 		context: this.context
 	});
 	return text.draw();
