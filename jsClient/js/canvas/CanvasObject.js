@@ -12,6 +12,7 @@ Parameters:
 function CanvasObject(elementId,context){
 	this.canvasElement=this.canvasElement=document.getElementById(elementId);
 	this.context = this.canvasElement.getContext(context)
+	return this;
 }
 
 
