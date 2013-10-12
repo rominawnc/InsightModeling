@@ -1,9 +1,19 @@
+/*
+ 
+ Class: ParamHandler
+ 
+ Ensures parameters are valid and runs callbacks when option keys have a function as value
+
+*/
 function ParamHandler(){
 	this.paramOptions={};
 	this.checkAgainst={};
 }
-/**
-** Options should not be undefined, and should have the properties defined in the "checkAgainst" object
+
+/*
+ Function: validateParams
+ Lends: paramOptions
+ Options should not be undefined, and should have the properties defined in the "checkAgainst" object
 */
 ParamHandler.prototype.validateParams=function(){
 	var isValid=true;
@@ -17,8 +27,10 @@ ParamHandler.prototype.validateParams=function(){
 	}	
 	return typeof(this.paramOptions)!="undefined"	&& isValid;
 }
-/**\
-** Options should not be undefined, and should have the properties defined in the "checkAgainst" object
+/*
+ * Function: doIfKeyExists
+ * Lends: ParamHandler
+ * If the key exists, and the value is a function, run it
 */
 ParamHandler.prototype.doIfKeyExists=function(){
 	for (var property in this.checkAgainst){
