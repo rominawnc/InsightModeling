@@ -25,6 +25,8 @@ function Square(options){
 	this.x=typeof(options.x)!="undefined"?options.x:null;
 	this.y=typeof(options.y)!="undefined"?options.y:null;	
 	this.context=typeof(options.context)!="undefined"?options.context:null;
+	this.parent=typeof(options.parent)!="undefined"?options.parent:null;
+	this.children=new Array();
 	/*
 	simple initialization method for squares. Only sets properties that do not exist in the current object
 	*/
@@ -49,8 +51,7 @@ Allows to either draw or redraw a square, since it will take old object  paramet
 Still learning prototype, so I could be screwing this up :(
 */
 Square.prototype.draw=function(options){
-	try{
-		
+	try{		
 		/*
 		this object has all keys that we can expect and what to do when we find them
 		*/
@@ -65,9 +66,14 @@ Square.prototype.draw=function(options){
 		
 		this.context.rect(this.x,this.y, this.height,this.width);
 		this.context.stroke();
+		this.parent.children.push(this);
 		return this;
 	}catch(e){
-		alert("Error");
+		if (Configuration.debug===true){
+			alert("Error"+e.message);
+		}else{
+			console.log("Error"+e.message);
+		}
 	}
 };
 /*
@@ -80,15 +86,14 @@ Parameters:
 	fillStyle {required} - {string} will determine the text function to use
 */
 Square.prototype.drawText = function(options){
-	var text = new TextObject({
+	return new TextObject({
 		x:this.x+options.x,
 		y:this.y+options.y,
 		text:options.text,
 		fillStyle:options.fillStyle,
-		context: this.context
-	});
-	return text.draw();
-
+		context: this.context,
+		parent:this
+	}).draw();
 }
 
 /*

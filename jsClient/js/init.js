@@ -4,8 +4,9 @@ $(document).ready(function(){
 		y:10,
 		x:10,
 		height:100,
-		width:200
+		width:200,
 	});
+
 	canvasObject.drawSquare({
 		y:10,
 		x:250,
@@ -20,12 +21,12 @@ $(document).ready(function(){
 		width:200
 	});
 
-	var square=canvasObject.drawSquare({
+	canvasObject.drawSquare({
 		y:250,
 		x:250,
 		height:100,
 		width:200
-	});
-	square.drawText({y:10,x:10,text:"Relative text", fillStyle:"fill"});
+	}).drawText({y:10,x:10,text:"Relative text", fillStyle:"fill"});
+
 	canvasObject.drawText({y:10,x:200,text:"Relative text", fillStyle:"fill"});
 });

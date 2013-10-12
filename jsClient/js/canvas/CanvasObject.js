@@ -11,7 +11,8 @@ Parameters:
 */
 function CanvasObject(elementId,context){
 	this.canvasElement=this.canvasElement=document.getElementById(elementId);
-	this.context = this.canvasElement.getContext(context)
+	this.context = this.canvasElement.getContext(context);
+	this.children= new Array();
 	return this;
 }
 
@@ -34,14 +35,14 @@ Returns:
 	boolean
 */
 CanvasObject.prototype.drawSquare = function(options){
-	var square = new Square();
-	square.x = options.x;
-	square.y =options.y;
-	square.height= options.height;
-	square.width=options.width;
-	square.context=this.context;
-	return square.draw();	
-
+	return new Square({
+		x:options.x,
+		y:options.y,
+		height:options.height,
+		width:options.width,
+		context:this.context,
+		parent:this
+	}).draw();
 }
 /*
 Function: fillText
@@ -53,13 +54,13 @@ Parameters:
 	fillStyle {required} - {string} will determine the text function to use
 */
 CanvasObject.prototype.drawText = function(options){
-	var text = new TextObject({
+	return new TextObject({
 		x:options.x,
 		y:options.y,
 		text:options.text,
 		fillStyle:options.fillStyle,
-		context: this.context
-	});
-	return text.draw();
+		context: this.context,
+		parent:this
+	}).draw();
 
 }

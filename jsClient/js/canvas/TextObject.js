@@ -22,7 +22,7 @@ function TextObject(options){
 	this.context=typeof(options.context)!="undefined"?options.context:null;
 	this.text=typeof(options.text)!="undefined"?options.text:null;
 	this.fillStyle =typeof(options.fillStyle)!="undefined"?options.fillStyle.toLowerCase():"fill"; // would use a simple callback type parameter, but it would be hell to mantain if the canvas API changes (which it wont... but still,you know?)	
-
+	this.parent=typeof(options.parent)!="undefined"?options.parent:null;
 	/*
 	simple initialization method for squares. Only sets properties that do not exist in the current object
 	*/
@@ -51,10 +51,15 @@ TextObject.prototype.draw = function(){
 	try{
 		if (typeof(fillFunctions[this.fillStyle])=="function"){
 			fillFunctions[this.fillStyle](this);
-		}	
+		}
+		this.parent.children.push(this);	
 		return this;
 	}catch (e){
-		alert("Error");
+		if (Configuration.debug===true){
+			alert("Error"+e.message);
+		}else{
+			console.log("Error"+e.message);
+		}
 	}
 	
 }
