@@ -37,6 +37,10 @@ function Square(options){
 	};
 	return this;
 };
+/*
+Function: getProperties
+Returns all the object properties
+*/
 Square.prototype.getProperties = function(){
 	var returnObject={};
 	for(var prop in this){
