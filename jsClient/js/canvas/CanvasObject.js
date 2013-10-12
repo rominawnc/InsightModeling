@@ -13,10 +13,102 @@ function CanvasObject(elementId,context){
 	this.canvasElement=this.canvasElement=document.getElementById(elementId);
 	this.context = this.canvasElement.getContext(context);
 	this.children= new Array();
+	this.moving=false;
+	this.dragging=false;
+	this.dragoffx=false;
+	this.dragoffy=false;
+	this.selectionColor = '#CC0000';
+	this.selectionWidth = 2;  
+	this.interval = 30;
+
+	// Some pages have fixed-position bars (like the stumbleupon bar) at the top or left of the page
+	// They will mess up mouse coordinates and this fixes that
+	var html = document.body.parentNode;
+	this.htmlTop = html.offsetTop;
+	this.htmlLeft = html.offsetLeft;
+
+	var stylePaddingLeft, stylePaddingTop, styleBorderLeft, styleBorderTop;
+	if (document.defaultView && document.defaultView.getComputedStyle) {
+		this.stylePaddingLeft = parseInt(document.defaultView.getComputedStyle(this.canvasElement, null)['paddingLeft'], 10)      || 0;
+		this.stylePaddingTop  = parseInt(document.defaultView.getComputedStyle(this.canvasElement, null)['paddingTop'], 10)       || 0;
+		this.styleBorderLeft  = parseInt(document.defaultView.getComputedStyle(this.canvasElement, null)['borderLeftWidth'], 10)  || 0;
+		this.styleBorderTop   = parseInt(document.defaultView.getComputedStyle(this.canvasElement, null)['borderTopWidth'], 10)   || 0;
+	}
+
+
+	this.startMouseListeners();
+
+	 
 	return this;
 }
+CanvasObject.prototype.startMouseListeners=function(){
+	var self=this;
+	this.mouseDownEvent();
+	this.mouseUpEvent();
+	this.mouseMoveEvent();
+}
+CanvasObject.prototype.mouseDownEvent=function(){
+	var self=this;
+	/*
+	Avoid the bug of text being selected on mousedown
+	*/
+	$(self.canvasElement).on('selectstart', function(e) { event.preventDefault(); return false; });
+	/*
+	Canvas element now listens to mousedown
+	*/
+	$(self.canvasElement).on('mousedown', function(e) {
+		var mouse=self.getMouse();
+		var currentChild=null;
+		for(var childKey in self.children){
+			if(self.children.hasOwnProperty(childKey)){
+				currentChild=self.children[childKey];
+				if(currentChild.contains(mouse.x,mouse.y)){
+					self.dragoffx=mouse.x-currentChild.x;
+					self.dragoffy=mouse.y-currentChild.y;
+					self.dragging=true;
+					currentChild.moving=true;
+					self.selection=currentChild;			
+					return;		
+				}
+			}
+		}
+	    // havent returned means we have failed to select anything.
+	    // If there was an object selected, we deselect it
+	    if (self.selection) {
+	      self.selection = null;
+	    }
+	});
+};
 
+// Determine if a point is inside the shape's bounds
+CanvasObject.prototype.contains = function(mx, my) {
+  // All we have to do is make sure the Mouse X,Y fall in the area between
+  // the shape's X and (X + Height) and its Y and (Y + Height)
+  return  (this.x <= mx) && (this.x + this.width >= mx) &&
+          (this.y <= my) && (this.y + this.height >= my);
+}
 
+CanvasObject.prototype.mouseMoveEvent = function(){
+	var self=this;
+	$(self.canvasElement).on('mousemove', function(e) {
+		if (self.dragging){
+		  var mouse = self.getMouse(event);
+		  // We don't want to drag the object by its top-left corner,
+		  // we want to drag from where we clicked.
+		  // Thats why we saved the offset and use it here
+		  self.selection.x = mouse.x - self.dragoffx;
+		  self.selection.y = mouse.y - self.dragoffy;   
+		  self.redraw();
+		}
+	});
+};
+
+CanvasObject.prototype.mouseUpEvent = function(){
+	var self=this;
+	$(self.canvasElement).on("mouseup", function(e){
+		self.dragging=false;
+	});
+};
 /*
 Function: drawSquare
 
@@ -34,16 +126,11 @@ Parameters:
 Returns:
 	boolean
 */
-CanvasObject.prototype.drawSquare = function(options){
-	return new Square({
-		x:options.x,
-		y:options.y,
-		height:options.height,
-		width:options.width,
-		context:this.context,
-		parent:this
-	}).draw();
-}
+CanvasObject.prototype.drawSquare = function(options){		
+	options.context=this.context;
+	options.parent=this;
+	return new Square(options).draw();
+};
 /*
 Function: fillText
 Returns: {boolean}
@@ -63,4 +150,45 @@ CanvasObject.prototype.drawText = function(options){
 		parent:this
 	}).draw();
 
+};
+CanvasObject.prototype.clear = function(){
+	//this.context.clearRect(0,0,this.canvasElement.width,this.canvasElement.height);
+	this.canvasElement.width=this.canvasElement.width;
+};
+CanvasObject.prototype.redraw = function(){	
+	this.clear();
+	var child=null;
+	for (var childKey in this.children){
+		child=this.children[childKey];
+		if (!(child.x>this.width || child.y > this.height||child.x+child.width<0 || child.y+child.height<0)){
+			child.redraw(this.context);
+		}
+	}
+};
+
+// Creates an object with x and y defined, set to the mouse position relative to the state's canvas
+// If you wanna be super-correct this can be tricky, we have to worry about padding and borders
+CanvasObject.prototype.getMouse = function(e) {
+  var element = this.canvasElement, offsetX = 0, offsetY = 0, mx, my;
+  
+  // Compute the total offset
+  if (element.offsetParent !== undefined) {
+    do {
+      offsetX += element.offsetLeft;
+      offsetY += element.offsetTop;
+    } while ((element = element.offsetParent));
+  }
+
+  // Add padding and border style widths to offset
+  // Also add the <html> offsets in case there's a position:fixed bar
+  offsetX += this.stylePaddingLeft + this.styleBorderLeft + this.htmlLeft;
+  offsetY += this.stylePaddingTop + this.styleBorderTop + this.htmlTop;
+
+  mx = event.pageX - offsetX;
+  my = event.pageY - offsetY;
+  
+  // We return a simple javascript object (a hash) with x and y defined
+  return {x: mx, y: my};
 }
+
+ 

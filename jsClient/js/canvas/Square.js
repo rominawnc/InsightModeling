@@ -1,4 +1,4 @@
-"use strict;"
+"use strict";
 /*
 Class: Square
 
@@ -20,23 +20,30 @@ function Square(options){
 	if (typeof(options)=="undefined"){
 		options={};
 	}
-	this.height=typeof(options.height)!="undefined"?options.height:null;
-	this.width=typeof(options.width)!="undefined"?options.width:null;
-	this.x=typeof(options.x)!="undefined"?options.x:null;
-	this.y=typeof(options.y)!="undefined"?options.y:null;	
-	this.context=typeof(options.context)!="undefined"?options.context:null;
-	this.parent=typeof(options.parent)!="undefined"?options.parent:null;
+	this.height=null;
+	this.width=null;
+	this.x=null;
+	this.y=null;	
+	this.parent=null;
 	this.children=new Array();
 	/*
-	simple initialization method for squares. Only sets properties that do not exist in the current object
+	simple initialization method for squares.
 	*/
 	for (var o in options) {
-		if(options.hasOwnProperty(o)  && !this.hasOwnProperty(o) ){
+		if(options.hasOwnProperty(o)){
 			this[o]=options[o];
 		}
 	};
 	return this;
 };
+
+// Determine if a point is inside the shape's bounds
+Square.prototype.contains = function(mx, my) {
+  // All we have to do is make sure the Mouse X,Y fall in the area between
+  // the shape's X and (X + Height) and its Y and (Y + Height)
+  return  (this.x <= mx) && (this.x + this.width >= mx) &&
+          (this.y <= my) && (this.y + this.height >= my);
+}
 /*
 Function: getProperties
 Returns all the object properties
@@ -55,27 +62,33 @@ Function: draw
 Draws a rectangle in the canvas or another rectangle(Square object)
 
 */
-Square.prototype.draw=function(){
+Square.prototype.draw=function(options){
 	try{
+
 		var rectFunctions = {
 			"strokeStyle": function(object){
-				object.context.strokeStyle=object.strokeStyle;				
+				object.parent.context.strokeStyle=object.strokeStyle;				
 			},
 			"lineWidth": function(object){
-				object.context.lineWidth=object.lineWidth;
+				object.parent.context.lineWidth=object.lineWidth;
 			}
 		}
 		/*
 		 execute a function for each found index. 
 		*/
-		for (var option in this.options) {
-			if (this.hasOwnProperty(option) && typeof(rectFunctions[options])=="function"){
+		for (var option in this) {
+			if (this.hasOwnProperty(option) && typeof(rectFunctions[option])=="function"){
 				rectFunctions[option](this);
 			}
 		};
-		this.context.rect(this.x,this.y, this.width,this.height);
-		this.context.stroke();
-		this.parent.children.push(this);
+		this.parent.context.rect(this.x,this.y, this.width,this.height);
+		this.parent.context.stroke();
+		if(typeof(options)=="object" && typeof(options.replace)!="undefined"){
+			this.parent.children[this.parent.children.indexOf(this)]=this;
+		}else{
+			this.parent.children.push(this);	
+		}
+		
 		return this;
 	}catch(e){
 		if (Configuration.debug===true){
@@ -85,6 +98,29 @@ Square.prototype.draw=function(){
 		}
 	}
 };
+/*
+Function: redraw 
+
+Redraw the object and it's childrens
+*/
+Square.prototype.redraw= function(){
+	try{			
+		this.parent.clear();
+		this.draw({replace:this});
+		for(var childKey in this.children){
+			if (this.children.hasOwnProperty(childKey)){
+				this.children[childKey].redraw();
+			}
+		}
+	}catch(e){
+		if (Configuration.debug===true){
+			alert("Error"+e.message);
+		}else{
+			console.log("Error"+e.message);
+		}	
+	}
+
+}
 /*
 Function: fillText
 Returns: {boolean}
@@ -99,8 +135,7 @@ Square.prototype.drawText = function(options){
 		x:this.x+options.x,
 		y:this.y+options.y,
 		text:options.text,
-		fillStyle:options.fillStyle,
-		context: this.context,
+		fillStyle:options.fillStyle,		
 		parent:this
 	}).draw();
 }
