@@ -41,10 +41,10 @@ Can write with two text fill functions, strokeText or  fillText.
 TextObject.prototype.draw = function(options){	
 	var fillFunctions = {
 		"stroke": function(object){
-			object.parent.context.strokeText(object.text, object.x,object.y);
+			object.parent.context.strokeText(object.text, object.parent.x+object.x,object.parent.y+object.y);
 		},
 		"fill": function(object){
-			object.parent.context.fillText(object.text,object.x,object.y);
+			object.parent.context.fillText(object.text,object.parent.x+object.x,object.parent.y+object.y);
 		}
 	}
 	try{
@@ -65,7 +65,10 @@ TextObject.prototype.draw = function(options){
 		}
 	}
 };
-
+/*
+Function: redraw
+Redraws the text object, will always be relative to parent
+*/
 TextObject.prototype.redraw = function(){
 	try{			
 		this.draw({replace:this});

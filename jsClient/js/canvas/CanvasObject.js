@@ -155,6 +155,12 @@ CanvasObject.prototype.clear = function(){
 	//this.context.clearRect(0,0,this.canvasElement.width,this.canvasElement.height);
 	this.canvasElement.width=this.canvasElement.width;
 };
+/*
+Function: redraw 
+
+Redraws the canvas and all its children. Children will redraw themselves and their children as well.
+Text position will be kept relative to parents
+*/
 CanvasObject.prototype.redraw = function(){	
 	this.clear();
 	var child=null;

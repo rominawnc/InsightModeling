@@ -11,7 +11,7 @@ $(document).ready(function(){
 		y:200,
 		x:10,
 		height:100,
-		lineWidth:20,
+		lineWidth:1,
 		width:200,
-	});
+	}).drawText({y:10,x:10,text:"First text", fillStyle:"fill"});
 });

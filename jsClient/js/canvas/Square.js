@@ -130,8 +130,8 @@ Parameters:
 */
 Square.prototype.drawText = function(options){
 	return new TextObject({
-		x:this.x+options.x,
-		y:this.y+options.y,
+		x:options.x,
+		y:options.y,
 		text:options.text,
 		fillStyle:options.fillStyle,		
 		parent:this
