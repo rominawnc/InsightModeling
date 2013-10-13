@@ -48,7 +48,7 @@ return array(
 		),
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=sippsAssessment',
+			'connectionString' => 'mysql:host=localhost;dbname={DBNAME}',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
