@@ -36,17 +36,24 @@ function CanvasObject(elementId,context){
 	}
 
 
-	this.startMouseListeners();
-
-	 
+	this.startMouseListeners(); 
 	return this;
 }
+/*
+Function: startMouseListeners
+Starts listeners for mousedown, mouseup and mousemove, making it possible to move rects around
+*/
 CanvasObject.prototype.startMouseListeners=function(){
 	var self=this;
 	this.mouseDownEvent();
 	this.mouseUpEvent();
 	this.mouseMoveEvent();
 }
+/*
+Function: mouseDownEvent
+
+When mouse is down, we will initialize the variables we need to move it as long as the mouse is over an object 
+*/
 CanvasObject.prototype.mouseDownEvent=function(){
 	var self=this;
 	/*
@@ -80,14 +87,22 @@ CanvasObject.prototype.mouseDownEvent=function(){
 	});
 };
 
-// Determine if a point is inside the shape's bounds
+
+/*
+Function: contains
+ Determine if a point is inside the shape's bounds
+*/
 CanvasObject.prototype.contains = function(mx, my) {
   // All we have to do is make sure the Mouse X,Y fall in the area between
   // the shape's X and (X + Height) and its Y and (Y + Height)
   return  (this.x <= mx) && (this.x + this.width >= mx) &&
           (this.y <= my) && (this.y + this.height >= my);
 }
+/*
+Function: mouseMoveEvent
 
+When mouse moves, redraw the canvas elements to reflect the change
+*/
 CanvasObject.prototype.mouseMoveEvent = function(){
 	var self=this;
 	$(self.canvasElement).on('mousemove', function(e) {
@@ -102,7 +117,11 @@ CanvasObject.prototype.mouseMoveEvent = function(){
 		}
 	});
 };
-
+/*
+Function: mouseUpEvent
+.
+When mouse is up, set dragging to false
+*/
 CanvasObject.prototype.mouseUpEvent = function(){
 	var self=this;
 	$(self.canvasElement).on("mouseup", function(e){
