@@ -171,9 +171,12 @@ CanvasObject.prototype.redraw = function(){
 		}
 	}
 };
+/*
+Function: getMouse
 
-// Creates an object with x and y defined, set to the mouse position relative to the state's canvas
-// If you wanna be super-correct this can be tricky, we have to worry about padding and borders
+Creates an object with x and y defined, set to the mouse position relative to the state's canvas
+If you wanna be super-correct this can be tricky, we have to worry about padding and borders
+*/
 CanvasObject.prototype.getMouse = function(e) {
   var element = this.canvasElement, offsetX = 0, offsetY = 0, mx, my;
   
