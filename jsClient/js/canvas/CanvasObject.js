@@ -19,6 +19,7 @@ function CanvasObject(elementId,context){
 	this.dragoffy=false;
 	this.selectionColor = '#CC0000';
 	this.selectionWidth = 2;  
+	this.selection = null;  
 	this.interval = 30;
 
 	// Some pages have fixed-position bars (like the stumbleupon bar) at the top or left of the page
@@ -47,6 +48,7 @@ CanvasObject.prototype.startMouseListeners=function(){
 	var self=this;
 	this.mouseDownEvent();
 	this.mouseUpEvent();
+
 	this.mouseMoveEvent();
 }
 /*
@@ -63,31 +65,40 @@ CanvasObject.prototype.mouseDownEvent=function(){
 	/*
 	Canvas element now listens to mousedown
 	*/
-	$(self.canvasElement).on('mousedown', function(e) {
+	$(self.canvasElement).on('mousedown', function(e) {		
 		var mouse=self.getMouse();
-		var currentChild=null;
-		for(var childKey in self.children){
-			if(self.children.hasOwnProperty(childKey)){
-				currentChild=self.children[childKey];
-				if(currentChild.contains(mouse.x,mouse.y)){
-					self.dragoffx=mouse.x-currentChild.x;
-					self.dragoffy=mouse.y-currentChild.y;
-					self.dragging=true;
-					currentChild.moving=true;
-					self.selection=currentChild;			
-					return;		
-				}
-			}
+		var currentChild=self.findMouseEventObject(mouse);			
+		// havent returned means we have failed to select anything.
+	    // If there was an object selected, we deselect it	  
+		if (currentChild===null){
+			self.selection = null;		
+		}else{
+			self.dragoffx=mouse.x-currentChild.x;
+			self.dragoffy=mouse.y-currentChild.y
+			self.dragging=true;
+			currentChild.moving=true;
+			self.selection=currentChild;			
 		}
-	    // havent returned means we have failed to select anything.
-	    // If there was an object selected, we deselect it
-	    if (self.selection) {
-	      self.selection = null;
-	    }
 	});
 };
-
-
+/*
+Function: findMouseEventObject
+Find the object interacting with the pointer
+*/
+CanvasObject.prototype.findMouseEventObject = function(mouse){
+	
+	var currentChild=null;
+	for(var childKey in this.children){
+		if(this.children.hasOwnProperty(childKey)){
+			currentChild=this.children[childKey];
+			if(currentChild.contains(mouse.x,mouse.y)){
+				
+				return currentChild;
+			}
+		}
+	}
+	return null;
+}
 /*
 Function: contains
  Determine if a point is inside the shape's bounds
@@ -106,14 +117,20 @@ When mouse moves, redraw the canvas elements to reflect the change
 CanvasObject.prototype.mouseMoveEvent = function(){
 	var self=this;
 	$(self.canvasElement).on('mousemove', function(e) {
+		var mouse=self.getMouse();	
 		if (self.dragging){
-		  var mouse = self.getMouse(event);
 		  // We don't want to drag the object by its top-left corner,
 		  // we want to drag from where we clicked.
 		  // Thats why we saved the offset and use it here
 		  self.selection.x = mouse.x - self.dragoffx;
 		  self.selection.y = mouse.y - self.dragoffy;   
 		  self.redraw();
+		}else{
+
+			var currentChild=self.findMouseEventObject(mouse);
+			if (currentChild){
+				new ContextualHelper(currentChild, self,{type:"deleteBar"}).draw();
+			}
 		}
 	});
 };

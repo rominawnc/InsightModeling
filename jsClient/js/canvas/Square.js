@@ -138,7 +138,6 @@ Square.prototype.drawText = function(options){
 	}).draw();
 }
 
-
 /*
 Function: ideas
 Create a function to draw inside objects.
