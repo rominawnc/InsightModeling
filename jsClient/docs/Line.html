@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: TextObject</title>
+    <title>JSDoc: Class: Line</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Class: TextObject</h1>
+    <h1 class="page-title">Class: Line</h1>
     
     
 
@@ -27,10 +27,11 @@
     
 <header>
     <h2>
-    TextObject
+    Line
     </h2>
     
-        <div class="class-description">TextObject description</div>
+        <div class="class-description">Line
+Line should act as a way to conect two squares.</div>
     
 </header>  
 
@@ -41,7 +42,7 @@
     
         
 <dt>
-    <h4 class="name" id="TextObject"><span class="type-signature"></span>new TextObject<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Line"><span class="type-signature"></span>new Line<span class="signature">(options)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -95,7 +96,7 @@
             
             
             
-            <td class="description last">object with all options for the text object
+            <td class="description last">list of line options.
                 <h6>Properties</h6>
                 
 
@@ -121,13 +122,13 @@
 	
         <tr>
             
-                <td class="name"><code>x</code></td>
+                <td class="name"><code>parent</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">required</span>
+<span class="param-type"><a href="CanvasObject.html">CanvasObject</a></span>
 
 
             
@@ -137,20 +138,20 @@
             
             
             
-            <td class="description last">x position of the text object</td>
+            <td class="description last">{required}</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>y</code></td>
+                <td class="name"><code>from</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">required</span>
+<span class="param-type"><a href="Square.html">Square</a></span>
 
 
             
@@ -160,20 +161,20 @@
             
             
             
-            <td class="description last">x position of the text object</td>
+            <td class="description last">where does this line start</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>fillStyle</code></td>
+                <td class="name"><code>to</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">required</span>
+<span class="param-type"><a href="Square.html">Square</a></span>
 
 
             
@@ -183,9 +184,7 @@
             
             
             
-            <td class="description last">fillStyle can be "stoke" or "fill". 
-									   1.stroke will convert to strokeText function
-									   2.fill will convert to fillText function</td>
+            <td class="description last">where does this line end</td>
         </tr>
 	
 	
@@ -222,7 +221,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TextObject.js.html">TextObject.js</a>, <a href="TextObject.js.html#line12">line 12</a>
+        <a href="Line.js.html">Line.js</a>, <a href="Line.js.html#line10">line 10</a>
     </li></ul></dd>
     
     
@@ -380,7 +379,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TextObject.js.html">TextObject.js</a>, <a href="TextObject.js.html#line41">line 41</a>
+        <a href="Line.js.html">Line.js</a>, <a href="Line.js.html#line72">line 72</a>
     </li></ul></dd>
     
     
@@ -430,7 +429,7 @@
         
             
 <dt>
-    <h4 class="name" id="draw"><span class="type-signature"></span>draw<span class="signature">(options)</span><span class="type-signature"> &rarr; {<a href="TextObject.html">TextObject</a>}</span></h4>
+    <h4 class="name" id="draw"><span class="type-signature"></span>draw<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Line.html">Line</a>}</span></h4>
     
     
 </dt>
@@ -438,7 +437,7 @@
     
     
     <div class="description">
-        draw Draws text in a canvas.
+        draw draws a line from the x,y coordinates of this.from to the x,y coordinates of this.to
     </div>
     
 
@@ -446,54 +445,6 @@
     
     
     
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Can write with two text fill functions, strokeText or  fillText.</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
     
     
     
@@ -519,7 +470,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TextObject.js.html">TextObject.js</a>, <a href="TextObject.js.html#line59">line 59</a>
+        <a href="Line.js.html">Line.js</a>, <a href="Line.js.html#line34">line 34</a>
     </li></ul></dd>
     
     
@@ -544,7 +495,7 @@
     
             
 <div class="param-desc">
-    the textobject that we just drew
+    the drawn line
 </div>
 
 
@@ -555,7 +506,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type"><a href="TextObject.html">TextObject</a></span>
+<span class="param-type"><a href="Line.html">Line</a></span>
 
 
 	</dd>
@@ -569,7 +520,7 @@
         
             
 <dt>
-    <h4 class="name" id="redraw"><span class="type-signature"></span>redraw<span class="signature">()</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="redraw"><span class="type-signature"></span>redraw<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Line.html">Line</a>}</span></h4>
     
     
 </dt>
@@ -577,7 +528,7 @@
     
     
     <div class="description">
-        redraw Redraws the text object, will always be relative to parent
+        draw draws a line from the x,y coordinates of this.from to the x,y coordinates of this.to
     </div>
     
 
@@ -610,7 +561,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TextObject.js.html">TextObject.js</a>, <a href="TextObject.js.html#line91">line 91</a>
+        <a href="Line.js.html">Line.js</a>, <a href="Line.js.html#line54">line 54</a>
     </li></ul></dd>
     
     
@@ -634,6 +585,10 @@
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    the drawn line
+</div>
+
 
 
 <dl>
@@ -642,7 +597,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">undefined</span>
+<span class="param-type"><a href="Line.html">Line</a></span>
 
 
 	</dd>
@@ -675,7 +630,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a> on Sat Oct 19 2013 20:07:28 GMT-0200 (UYST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a> on Sat Oct 19 2013 20:07:27 GMT-0200 (UYST)
 </footer>
 
 <script> prettyPrint(); </script>
