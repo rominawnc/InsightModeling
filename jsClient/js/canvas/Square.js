@@ -21,6 +21,8 @@ function Square(options){
 	this.x=null;
 	this.y=null;	
 	this.parent=null;
+	this.forbidOverlap=null;
+
 	this.children=new Array();
 	/*
 	simple initialization method for squares.
@@ -32,6 +34,21 @@ function Square(options){
 	};
 	return this;
 };
+/**
+ * overlapping controls that the current object is not overlapping with forbidden objects
+ * @return {boolean} false if not overlapping
+ */
+Square.prototype.overlapping = function(){
+	var forbiddenObject=null;
+	for (var i = this.parent.children.length - 1; i >= 0; i--) {
+		forbiddenObject=this.parent.children[i];
+		if (this != forbiddenObject && this.forbidOverlap.indexOf(forbiddenObject.constructor.name)>-1 && (this.x < forbiddenObject.x + forbiddenObject.width  && this.x + this.width  > forbiddenObject.x &&
+	    	this.y < forbiddenObject.y + forbiddenObject.height && this.y + this.height > forbiddenObject.y)) {			
+			return true;
+		}
+	}
+	return false;
+}
 
 /**
  * contains Determine if a point is inside the shape's bounds

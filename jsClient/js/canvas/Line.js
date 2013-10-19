@@ -13,7 +13,8 @@ function Line(options){
 	}
 	this.parent=null;
 	this.to=null;
-	this.from=null;
+	this.from=null;	
+	this.forbidOverlap=null;
 
 	/*
 	simple initialization method for squares.

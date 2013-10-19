@@ -82,7 +82,7 @@ CanvasObject.prototype.mouseDownEvent=function(){
 		if (currentChild===null){
 			self.selection = null;		
 		}else if (currentChild instanceof ContextualHelper){
-				currentChild.executeClickAction();
+			currentChild.executeClickAction();
 		}else{
 			self.dragoffx=mouse.x-currentChild.x;
 			self.dragoffy=mouse.y-currentChild.y
@@ -92,6 +92,7 @@ CanvasObject.prototype.mouseDownEvent=function(){
 		}
 	});
 };
+
 /**
  * findMouseEventObject Find the object interacting with the pointer
  * @param  {type} mouse
@@ -168,9 +169,21 @@ CanvasObject.prototype.mouseMoveEvent = function(){
 CanvasObject.prototype.mouseUpEvent = function(){
 	var self=this;
 	$(self.canvasElement).on("mouseup", function(e){
-		self.dragging=false;
+		if(_.falsy(self.selection)){
+			self.dragging=false;
+			return false;
+		}
+		if (self.selection.forbidOverlap===null||self.selection.overlapping()===false){			
+			self.dragging=false;
+		}else if (self.selection.forbidOverlap===null && self.selection.overlapping()===true){
+			/**
+			 * should change element color
+			 */
+			
+		}
 	});
 };
+
 /**
  * drawSquare Draws a square in this canvas
  * @param  {object} options Object with the canvas rect() parameters. 
