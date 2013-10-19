@@ -4,6 +4,94 @@
 		"selected_items":
 		[
 			[
+				"tar",
+				"this.target.x"
+			],
+			[
+				"thio",
+				"this.helper.buttons"
+			],
+			[
+				"drag",
+				"dragging"
+			],
+			[
+				"wi",
+				"this.width"
+			],
+			[
+				"windo",
+				"windowScreenLeft"
+			],
+			[
+				"window",
+				"windowScreenTop"
+			],
+			[
+				"border",
+				"borderLeft"
+			],
+			[
+				"paddin",
+				"paddingLeft"
+			],
+			[
+				"Canvas",
+				"CanvasObject"
+			],
+			[
+				"Can",
+				"CanvasObject"
+			],
+			[
+				"current",
+				"currentChild"
+			],
+			[
+				"chi",
+				"childKey"
+			],
+			[
+				"sq",
+				"squareOptions"
+			],
+			[
+				"ret",
+				"returnObject"
+			],
+			[
+				"rec",
+				"rectFunctions"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"cont",
+				"context	jQueryDeprecated"
+			],
+			[
+				"option",
+				"options"
+			],
+			[
+				"canvas",
+				"canvasObject"
+			],
+			[
+				"ca",
+				"canvasObject"
+			],
+			[
+				"f",
+				"for	for (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"fu",
+				"isFunction	jQuery"
+			],
+			[
 				"inde",
 				"indexes"
 			],
@@ -32,10 +120,6 @@
 				"tableName"
 			],
 			[
-				"for",
-				"foreach	foreach …"
-			],
-			[
 				"json",
 				"json_encode"
 			],
@@ -60,10 +144,6 @@
 				"tableValue"
 			],
 			[
-				"f",
-				"foreach	foreach …"
-			],
-			[
 				"id",
 				"idGame"
 			],
@@ -84,28 +164,84 @@
 	"buffers":
 	[
 		{
-			"contents": "Package Control Messages\n========================\n\nBetter JavaScript:\n-----------------\n\n  Better JavaScript is now installed! To ensure that the updated syntax file and symbol list take\n  effect, you may need to do the following:\n  \n  1. Close all open JavaScript/JSON files (including .sublime-settings files)\n  2. Exit Sublime\n  3. Delete the cache and index files in your Sublime user directory\n  4. Re-open Sublime\n  \n  \n  Uninstalling\n  ------------\n  Before uninstalling Better JavaScript, be sure close all open JavaScript/JSON\n  files, and remove \"JavaScript\" from the \"ignored_packages\" list in your Sublime\n  user settings. You can now safely uninstall the Better JavaScript package.\n  \n  It's normal to see a few errors from Sublime about not being able to find syntax files. Just exit\n  Sublime and re-open it, and everything should be fixed.\n\n\nBetter Completion:\n-----------------\n\n  Sublime Better Completion Package\n  ===============================\n  \n  How To USE\n  ==========\n  \n  This package APIs is **disabled** by default during the initial installation.\n  \n  So you need open `API-Completion-Package: Setting - User` and setup what the completion you wanna enable and finally you have to re-start your sublime text editor.\n  \n  \n  For more information, please visit:\n  	https://github.com/Pleasurazy/Sublime-Better-Completion\n",
+			"file": "/home/romina/Documents/Workspace/insightDB/jsClient/movable.html",
 			"settings":
 			{
-				"buffer_size": 1350,
+				"buffer_size": 724,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "initMovable.js",
+			"settings":
+			{
+				"buffer_size": 328,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "canvas/Square.js",
+			"settings":
+			{
+				"buffer_size": 4443,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "canvas/TextObject.js",
+			"settings":
+			{
+				"buffer_size": 2948,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "canvas/CanvasObject.js",
+			"settings":
+			{
+				"buffer_size": 8219,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 5 files for \"activeContextualHelper\"\n\n/home/romina/Documents/Workspace/insightDB/jsClient/js/canvas/CanvasObject.js:\n   25  	this.htmlLeft = document.body.parentNode.offsetLeft;\n   26  	//if this is null, do nothing. If this is an object and mouse leaves it, we will redraw the whole canvas witouth this object\n   27: 	this.activeContextualHelper=null;\n   28  	if (document.defaultView && document.defaultView.getComputedStyle) {\n   29  		this.stylePaddingLeft = parseInt(document.defaultView.getComputedStyle(this.canvasElement, null)['paddingLeft'], 10)      || 0;\n   ..\n  114  	As the contextual helper is not in the canvas structure, we look for it specifically\n  115  	*/\n  116: 	if (typeof(this.activeContextualHelper) !=\"undefined\" && this.activeContextualHelper!==null && this.activeContextualHelper.contains(mouse.x,mouse.y)){		\n  117: 		return this.activeContextualHelper;		\n  118  	}\n  119  	return null;\n  ...\n  144  		  self.selection.x = mouse.x - self.dragoffx;\n  145  		  self.selection.y = mouse.y - self.dragoffy;   \n  146: 		  this.activeContextualHelper=null;\n  147  		  self.redraw();\n  148  		}else{\n  149  			var currentChild=self.findMouseEventObject(mouse);\n  150: 			if (currentChild && self.activeContextualHelper==null){\n  151: 				self.activeContextualHelper=new ContextualHelper(currentChild, self,{type:\"deleteBar\"}).draw();\n  152: 			}else if (self.activeContextualHelper!==null && typeof(self.activeContextualHelper)==\"object\"){\n  153: 				if(self.activeContextualHelper.target!=currentChild){\n  154  					self.redraw();\n  155  				}\n\n11 matches in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 1599,
 				"line_ending": "Unix",
-				"name": "Package Control Messages",
+				"name": "Find Results",
 				"scratch": true
+			}
+		},
+		{
+			"file": "canvas/ContextualHelper.js",
+			"settings":
+			{
+				"buffer_size": 1266,
+				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 306.0,
+		"height": 243.0,
 		"selected_items":
 		[
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: ",
 				"Package Control: Enable Package"
 			]
 		],
-		"width": 449.0
+		"width": 467.0
 	},
 	"console":
 	{
@@ -125,14 +261,23 @@
 	},
 	"file_history":
 	[
-		"/home/romina/.config/sublime-text-3/Packages/Sublime-Better-Completion/sublime-API-Completions-Package.sublime-settings",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/canvas/TextObject.js",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/canvas/CanvasObject.js",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/canvas/MovableObjects.js",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/index.html",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/basicDrawing.html",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/init.js",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/config.js",
+		"/home/romina/Documents/Workspace/insightDB/protected/config/main.php",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/canvas/Square.js",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/canvas/ParamHandler.js",
+		"/home/romina/Documents/Workspace/insightDB/jsClient/js/CanvasObject.js",
 		"/home/romina/.config/sublime-text-3/Packages/User/sublime-API-Completions-Package.sublime-settings",
 		"/home/romina/Documents/Workspace/insightDB/jsClient/tru.js",
+		"/home/romina/.config/sublime-text-3/Packages/Sublime-Better-Completion/sublime-API-Completions-Package.sublime-settings",
 		"/home/romina/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
 		"/home/romina/Documents/Workspace/insightDB/jsClient/js/ParamHandler.js",
 		"/home/romina/Documents/Workspace/insightDB/jsClient/js/Square.js",
-		"/home/romina/Documents/Workspace/insightDB/jsClient/index.html",
-		"/home/romina/Documents/Workspace/insightDB/jsClient/js/CanvasObject.js",
 		"/home/romina/Documents/Workspace/insightDB/jsClient/CanvasObject.js",
 		"/home/romina/Documents/Workspace/insightDB/jsClient/ParamHandler.js",
 		"/home/romina/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
@@ -142,7 +287,6 @@
 		"/home/romina/Documents/Workspace/insightDB/protected/components/DBDescriptor.php",
 		"/home/romina/Documents/Workspace/insightDB/protected/controllers/RestController.php",
 		"/home/romina/Documents/Workspace/insightDB/index.php",
-		"/home/romina/Documents/Workspace/insightDB/protected/config/main.php",
 		"/home/romina/Documents/Workspace/insightDB/protected/runtime/application.log",
 		"/home/romina/Documents/Workspace/insightDB/protected/config/console.php",
 		"/home/romina/Documents/Workspace/DSCAdmin/admin/protected/config/main.php",
@@ -152,13 +296,14 @@
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			"/home/romina/Documents/Workspace/insightDB/jsClient/js/canvas",
 			"/home/romina/parties"
 		]
 	},
@@ -167,6 +312,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"this.act",
+			"activeContextualHelper",
+			"children",
+			"redraw",
+			".children",
+			"html",
+			"mouseMoveEvent",
+			"findmou",
+			"findMouseEventObject",
+			"findmou",
+			".vali",
+			"mouseup",
+			".val",
+			".context",
+			"this.context",
+			"\"use strict;\"",
 			"findBelongsToRelationships",
 			"curdb",
 			"queryAll",
@@ -192,6 +353,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"\"use strict\";"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -202,32 +364,260 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "/home/romina/Documents/Workspace/insightDB/jsClient/movable.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1350,
+						"buffer_size": 724,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1252,
-								1252
+								724,
+								724
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"word_wrap": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 345.0,
+						"translation.y": 19.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "initMovable.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 328,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								248,
+								248
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "canvas/Square.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4443,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3587,
+								3587
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2508.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "canvas/TextObject.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2948,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								463,
+								463
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "canvas/CanvasObject.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8219,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3960,
+								3960
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2690.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1599,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										334,
+										356
+									],
+									[
+										711,
+										733
+									],
+									[
+										757,
+										779
+									],
+									[
+										795,
+										817
+									],
+									[
+										869,
+										891
+									],
+									[
+										1061,
+										1083
+									],
+									[
+										1228,
+										1250
+									],
+									[
+										1275,
+										1297
+									],
+									[
+										1391,
+										1413
+									],
+									[
+										1436,
+										1458
+									],
+									[
+										1491,
+										1513
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								1073,
+								1073
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "canvas/ContextualHelper.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1266,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								491,
+								491
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better JavaScript/JavaScript.tmLanguage",
+							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
+						},
+						"translation.x": 0.0,
+						"translation.y": 22.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -237,7 +627,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 30.0
+		"height": 39.0
 	},
 	"input":
 	{
