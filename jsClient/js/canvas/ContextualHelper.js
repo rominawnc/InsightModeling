@@ -18,7 +18,7 @@ function ContextualHelper(target,canvasObject,options){
 }
 /**
  * deleteBar Renders a very concise toolbar with only 2 buttons right now. Delete and close.
- * @return {object}  Square with the delete button
+ * @return {Square}  Square with the delete button
  */
 ContextualHelper.prototype.deleteBar = function(){
 	var self=this;
