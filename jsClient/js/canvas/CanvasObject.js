@@ -99,23 +99,23 @@ CanvasObject.prototype.mouseDownEvent=function(){
  */
 CanvasObject.prototype.findMouseEventObject = function(mouse){	
 	var currentChild=null;
+	var returnChild=null;
+
+	for(var childKey in this.children){
+		if(this.children.hasOwnProperty(childKey)){
+			currentChild=this.children[childKey];
+			if(currentChild.contains(mouse.x,mouse.y,{instanceOf:Square})){				
+				returnChild= currentChild;
+			}
+		}
+	}
 	/*
 	As the contextual helper is not in the canvas structure, we look for it specifically
 	*/
 	if (typeof(this.activeContextualHelper) !="undefined" && this.activeContextualHelper!==null && this.activeContextualHelper.element.contains(mouse.x,mouse.y)){		
-		return this.activeContextualHelper;		
+		returnChild= this.activeContextualHelper;		
 	}
-	for(var childKey in this.children){
-		if(this.children.hasOwnProperty(childKey)){
-			currentChild=this.children[childKey];
-			if(currentChild.contains(mouse.x,mouse.y,{instanceOf:Square})){
-				
-				return currentChild;
-			}
-		}
-	}
-
-	return null;
+	return returnChild;
 }
 /**
  * contains Determine if a point is inside the shape's bounds
@@ -261,5 +261,16 @@ CanvasObject.prototype.getMouse = function(e) {
   // We return a simple javascript object (a hash) with x and y defined
   return {x: mx, y: my};
 }
-
- 
+/**
+ * drawLine draws a line from one square to another
+ * @param  {Square} options.from the starting point square
+ * @param  {Square} options.to   the ending point square
+ * @return {Line} the drawn line      
+ */
+CanvasObject.prototype.drawLine = function(options){
+	return new Line({
+		parent:this, 
+		from:options.from, 
+		to:options.to		
+	}).draw();
+}
