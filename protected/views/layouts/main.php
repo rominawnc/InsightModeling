@@ -1,4 +1,4 @@
-<?php /* @var $this Controller */ ?>
+<?php   /* @var $this Controller */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -15,6 +15,26 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
+
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/config.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/lang/en.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.js"></script>	
+	<script src="http://underscorejs.org/underscore.js" type="text/javascript"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/utils/UnderscorePlugins.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/libs/pnotify/jquery.pnotify.js"></script>
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/libs/pnotify/jquery.pnotify.default.css" />
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/libs/select2/select2.js"></script>
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/libs/select2/select2.css" />
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/canvas/ContextualHelper.js"></script>	
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/canvas/TextObject.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/canvas/ParamHandler.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/canvas/Square.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/canvas/Line.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/canvas/CanvasObject.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/jsApiToolkit/DataMapper.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/jsApiToolkit/DataLoader.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/jsApiToolkit/AllInOne.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/jsClient/js/init.js"></script>	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
