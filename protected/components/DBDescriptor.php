@@ -25,13 +25,19 @@ class DBDescriptor{
 			if (is_array($tableValue) && isset($tableValue[0])){
 				$tableName=$tableValue[0];
 				$tableDescription=$this->describeTable($tableName);
-				$return[]=array('table'=>$tableName,'showCreate'=>$tableDescription,'relationships'=>$this->findBelongsToRelationships($tableName),'indexes'=>$this->findTableIndexes($tableName));
+				$columns=$this->listTableColumns($tableName);
+				$return[]=array('table'=>$tableName,'showCreate'=>$tableDescription,'relationships'=>$this->findBelongsToRelationships($tableName),'indexes'=>$this->findTableIndexes($tableName),'columns'=>$columns);
 			}
 		}
 
-		return json_encode($return);
+		return $return;
 	}
-
+	public function listTableColumns($tableName){
+		$showTableSQL="show columns from `$tableName`;";
+		$columns=Yii::app()->db->createCommand($showTableSQL)->queryAll();
+		
+		return $columns;
+	}
 	public function describeTable($tableName){
 		$showTableSQL="show create table `$tableName`";
 		$showTable=Yii::app()->db->createCommand($showTableSQL)->queryAll();

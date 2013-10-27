@@ -175,4 +175,10 @@ class DbDataController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	public function actionDescribeDb($id){
+		$model=$this->loadModel($id);			
+		$dbDescriptor=new DBDescriptor($model->database_name);
+		echo json_encode($dbDescriptor->describeDatabase());	
+	}
 }
