@@ -1,9 +1,12 @@
 <?php
 class DBDescriptor{
 	private $currentDB;
-	function __construct(){
-		$this->currentDB=$this->getCurrentDB();
+	function __construct($dbName=null){
+		$this->currentDB=$dbName;
+		if (!$dbName)
+			$this->currentDB=$this->getCurrentDB();
 	}
+
 	private function getCurrentDB(){
 		$currentDB  = explode('dbname=', Yii::app()->db->connectionString);
 		if (is_array($currentDB) && isset($currentDB[1]))
@@ -11,7 +14,10 @@ class DBDescriptor{
 		return null;
 	}
 	public function describeDatabase(){
-		$return=array();		
+		$return=array();	
+
+		$showTablesSQL="use $this->currentDB;";
+		$showTables=Yii::app()->db->createCommand($showTablesSQL)->execute();
 		$showTablesSQL="show tables;";
 		$showTables=Yii::app()->db->createCommand($showTablesSQL)->queryAll();
 		foreach ($showTables as $key => $tableValue) {					
@@ -69,4 +75,16 @@ class DBDescriptor{
 		$indexes=Yii::app()->db->createCommand($sql)->queryAll();
 		return $indexes;
 	}
+	/**
+	 ** List all databases in the db server
+	**/
+	public function listDatabases(){
+		if (!$this->currentDB){
+			return false;			
+		}
+		$sql= "show databases;";
+		$databases= Yii::app()->db->createCommand($sql)->queryAll();
+		return $databases;
+	}
+
 }

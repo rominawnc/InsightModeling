@@ -19,8 +19,6 @@ return array(
 			'password' => '',
 			'charset' => 'utf8',
 		),
-		
-		*/
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
