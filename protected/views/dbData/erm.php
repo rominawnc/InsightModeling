@@ -21,3 +21,4 @@ $this->menu=array(
 <h1><?php echo $model->database_name;?></h1>
 
 <canvas id="ermCanvas" width="500px" height="500px"></canvas>
+<a href="#save" id="saveERM">Save ERM</a>

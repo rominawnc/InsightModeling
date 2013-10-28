@@ -181,4 +181,26 @@ class DbDataController extends Controller
 		$dbDescriptor=new DBDescriptor($model->database_name);
 		echo json_encode($dbDescriptor->describeDatabase());	
 	}
+
+
+	/**
+	 * Updates a particular model.
+	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionUpdateERM($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['DbData']))
+		{
+			$model->attributes=$_POST['DbData'];
+			$model->save();		
+		}
+
+		echo json_encode($model);
+	}
 }
