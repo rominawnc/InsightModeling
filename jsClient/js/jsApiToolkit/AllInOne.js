@@ -50,6 +50,9 @@ AllInOne.prototype.setup = function(){
 		 * @type {integer}
 		 */
 		for (var i = database.length - 1; i >= 0; i--) {
+                        /**
+                         * If the table is in the erm list for this database, we will use its data to load the item in the corresponding location. 
+                         */
                         ermObject=_.findWhere(erm,{dbObject:database[i].table});
                         if (!ermObject){
                             ermObject={};
@@ -66,7 +69,7 @@ AllInOne.prototype.setup = function(){
 				lineWidth:ermObject.lineWidth,
 				width:ermObject.width,
                                 dbObject:database[i].table
-			}).drawText({y:10,x:10,text:database[i].table, fillStyle:"fill"});;			
+			}).drawText({y:10,x:10,text:database[i].table, fillStyle:"fill"});//table name position will still be relative to the table
 		};
 		
 	});
