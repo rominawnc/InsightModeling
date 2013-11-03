@@ -167,7 +167,7 @@
 			"file": "/home/romina/Documents/Workspace/insightDB/jsClient/movable.html",
 			"settings":
 			{
-				"buffer_size": 724,
+				"buffer_size": 808,
 				"line_ending": "Unix"
 			}
 		},
@@ -183,7 +183,7 @@
 			"file": "canvas/Square.js",
 			"settings":
 			{
-				"buffer_size": 4443,
+				"buffer_size": 5552,
 				"line_ending": "Unix"
 			}
 		},
@@ -191,7 +191,7 @@
 			"file": "canvas/TextObject.js",
 			"settings":
 			{
-				"buffer_size": 2948,
+				"buffer_size": 3226,
 				"line_ending": "Unix"
 			}
 		},
@@ -199,25 +199,15 @@
 			"file": "canvas/CanvasObject.js",
 			"settings":
 			{
-				"buffer_size": 8219,
+				"buffer_size": 9519,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 5 files for \"activeContextualHelper\"\n\n/home/romina/Documents/Workspace/insightDB/jsClient/js/canvas/CanvasObject.js:\n   25  	this.htmlLeft = document.body.parentNode.offsetLeft;\n   26  	//if this is null, do nothing. If this is an object and mouse leaves it, we will redraw the whole canvas witouth this object\n   27: 	this.activeContextualHelper=null;\n   28  	if (document.defaultView && document.defaultView.getComputedStyle) {\n   29  		this.stylePaddingLeft = parseInt(document.defaultView.getComputedStyle(this.canvasElement, null)['paddingLeft'], 10)      || 0;\n   ..\n  114  	As the contextual helper is not in the canvas structure, we look for it specifically\n  115  	*/\n  116: 	if (typeof(this.activeContextualHelper) !=\"undefined\" && this.activeContextualHelper!==null && this.activeContextualHelper.contains(mouse.x,mouse.y)){		\n  117: 		return this.activeContextualHelper;		\n  118  	}\n  119  	return null;\n  ...\n  144  		  self.selection.x = mouse.x - self.dragoffx;\n  145  		  self.selection.y = mouse.y - self.dragoffy;   \n  146: 		  this.activeContextualHelper=null;\n  147  		  self.redraw();\n  148  		}else{\n  149  			var currentChild=self.findMouseEventObject(mouse);\n  150: 			if (currentChild && self.activeContextualHelper==null){\n  151: 				self.activeContextualHelper=new ContextualHelper(currentChild, self,{type:\"deleteBar\"}).draw();\n  152: 			}else if (self.activeContextualHelper!==null && typeof(self.activeContextualHelper)==\"object\"){\n  153: 				if(self.activeContextualHelper.target!=currentChild){\n  154  					self.redraw();\n  155  				}\n\n11 matches in 1 file\n",
-			"settings":
-			{
-				"buffer_size": 1599,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
 			}
 		},
 		{
 			"file": "canvas/ContextualHelper.js",
 			"settings":
 			{
-				"buffer_size": 1266,
+				"buffer_size": 1301,
 				"line_ending": "Unix"
 			}
 		}
@@ -364,7 +354,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -373,15 +363,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 724,
+						"buffer_size": 808,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								724,
-								724
+								549,
+								549
 							]
 						],
 						"settings":
@@ -389,7 +379,7 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 19.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -429,7 +419,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4443,
+						"buffer_size": 5552,
 						"regions":
 						{
 						},
@@ -458,15 +448,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2948,
+						"buffer_size": 3226,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								463,
-								463
+								2948,
+								2948
 							]
 						],
 						"settings":
@@ -486,7 +476,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8219,
+						"buffer_size": 9519,
 						"regions":
 						{
 						},
@@ -511,96 +501,11 @@
 				},
 				{
 					"buffer": 5,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1599,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										334,
-										356
-									],
-									[
-										711,
-										733
-									],
-									[
-										757,
-										779
-									],
-									[
-										795,
-										817
-									],
-									[
-										869,
-										891
-									],
-									[
-										1061,
-										1083
-									],
-									[
-										1228,
-										1250
-									],
-									[
-										1275,
-										1297
-									],
-									[
-										1391,
-										1413
-									],
-									[
-										1436,
-										1458
-									],
-									[
-										1491,
-										1513
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								1073,
-								1073
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
 					"file": "canvas/ContextualHelper.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1266,
+						"buffer_size": 1301,
 						"regions":
 						{
 						},

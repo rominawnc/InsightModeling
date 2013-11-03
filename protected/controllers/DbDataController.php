@@ -181,8 +181,17 @@ class DbDataController extends Controller
 		$dbDescriptor=new DBDescriptor($model->database_name);
 		echo json_encode($dbDescriptor->describeDatabase());	
 	}
-
-
+        
+        /**
+         * Return DBDescriptor describeDatabase return value + ERM db_data JSON value for the selected ERM id
+         * @param integer $id the ID of the model to return data of
+         */
+	public function actionDescribeDbAndERM($id){
+		$model=$this->loadModel($id);			
+		$dbDescriptor=new DBDescriptor($model->database_name);
+		echo json_encode(array("database"=>$dbDescriptor->describeDatabase(),"erm"=>json_decode($model->json_object)));
+        }
+        
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
